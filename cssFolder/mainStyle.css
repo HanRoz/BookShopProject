@@ -1,0 +1,73 @@
+body {
+    background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
+        url(./imageNIcon/steptodown.com915463-removebg-previewNoBg.png);
+    background-color: rgba(170, 248, 248, 0.932);
+    background-position: center;
+    margin: 0;
+}
+
+.header {
+    margin: 0;
+    background-image: linear-gradient(to right, #a6fdfcd2, #00928f, #00928f);
+    position: fixed;
+    width: 100%;
+}
+
+#topHeader {
+    display: flex;
+    justify-content: center;
+}
+
+#searchBar {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 290px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+}
+
+input {
+    margin: 10px;
+    padding-left: 20px;
+    border-radius: 50px;
+    border-style: solid;
+    border-width: thin;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+.navbar {
+    height: 40px;
+    background-image: url(./imageNIcon/header-removebg-preview.png);
+    background-color: rgba(244, 255, 255, 0.918);
+    background-position: center;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+}
+
+.personal {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.content {
+    height: 2000px;
+    /*only for testing */
+}
