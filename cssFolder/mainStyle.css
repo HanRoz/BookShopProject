@@ -32,7 +32,8 @@ body {
     transform: translateY(-50%);
     width: 14px;
     height: 14px;
-    pointer-events: none;
+    cursor: pointer;
+    /* pointer-events: auto; */
 }
 
 input {
@@ -47,24 +48,42 @@ input {
 }
 
 .navbar {
-    height: 40px;
+    height: 50px;
     background-image: url(./imageNIcon/header-removebg-preview.png);
     background-color: rgba(244, 255, 255, 0.918);
     background-position: center;
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
 }
 
-.nav {
-    display: flex;
-    align-items: center;
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 1;
+    overflow: hidden;
 }
 
-.personal {
-    display: flex;
-    justify-content: end;
-    align-items: center;
+li {
+    float: left;
+    margin: 2px;
+}
+
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    border-radius: 20px;
+    border: 1px solid;
+    background-color: white;
+    box-shadow: 2.5px 2px #424141c5;
+}
+
+li a:hover:not(.active) {
+    background-color: #f6cb07d2;
+}
+
+.active {
+    /* background-color: #04AA6D; */
 }
 
 .content {
