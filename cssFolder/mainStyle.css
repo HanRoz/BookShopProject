@@ -9,7 +9,6 @@ body {
 .header {
     margin: 0;
     background-image: linear-gradient(to right, #a6fdfcd2, #00928f, #00928f);
-    position: fixed;
     width: 100%;
 }
 
@@ -86,26 +85,10 @@ li a:hover:not(.active) {
     background-color: #f6cb07d2;
 }
 
-.active {
+/* .active {
     background-color: #ffd609f9;
-}
+} */        /*On hold to test active funtion when page change*/
 
-#home {
+.content{
     height: 1000px;
-    /*only for testing */
-}
-
-#browse {
-    height: 1000px;
-    /*only for testing */
-}
-
-#library {
-    height: 1000px;
-    /*only for testing */
-}
-
-#about {
-    height: 1000px;
-    /*only for testing */
 }
