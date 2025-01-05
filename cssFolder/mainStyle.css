@@ -1,94 +1,117 @@
 body {
-    background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
-        url(./imageNIcon/steptodown.com915463-removebg-previewNoBg.png);
-    background-color: rgba(170, 248, 248, 0.932);
-    background-position: center;
-    margin: 0;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url(./imageNIcon/steptodown.com915463-removebg-previewNoBg.png);
+  background-color: #edf9ff;
+  background-position: center;
+  margin: 0;
 }
 
 .header {
-    margin: 0;
-    background-image: linear-gradient(to right, #a6fdfcd2, #00928f, #00928f);
-    width: 100%;
+  background-image: linear-gradient(to right, #a6fdfcd2, #00928f, #00928f);
+  width: 100%;
 }
 
 #topHeader {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px; /* Adjust height to ensure proper vertical alignment */
+  position: relative;
 }
 
 #searchBar {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    max-width: 290px;
+  position: relative;
+  width: 100%;
+  max-width: 500px; /* Slightly increase the max-width for better visibility */
+  margin: 0 auto; /* Center it horizontally */
+  display: flex;
+  align-items: center;
 }
 
 .search-icon {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 14px;
-    height: 14px;
-    cursor: pointer;
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
 }
 
 input {
-    margin: 10px;
-    padding-left: 25px;
-    border-radius: 50px;
-    border-style: solid;
-    border-width: thin;
-    width: 100%;
-    max-width: 400px;
-    box-sizing: border-box;
+  margin: 10px;
+  padding-left: 25px;
+  border-radius: 50px;
+  border-style: solid;
+  border-width: thin;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+#searchBox {
+  width: 400px;
+  height: 40px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#logo {
+  width: 90px; /* Adjust width to make it smaller */
+  height: auto; /* Keep aspect ratio */
+  position: absolute;
+  top: 0; /* Move it closer to the top */
+  left: 10px; /* Distance from the left */
 }
 
 .navbar {
-    height: 50px;
-    background-image: url(./imageNIcon/header-removebg-preview.png);
-    background-color: rgba(244, 255, 255, 0.918);
-    background-position: center;
+  height: 58px;
+  background-image: url(./imageNIcon/header-removebg-preview.png);
+  background-color: #ffffff;
+  background-position: center;
+  margin-top: 20px;
 }
 
 .navLinkUl {
-    list-style-type: none;
-    margin: 0;
-    padding: 1;
-    overflow: hidden;
+  list-style-type: none;
+  margin: 0;
+  padding: 1;
+  overflow: hidden;
 }
 
 .navLink {
-    float: left;
-    margin: 2px;
+  float: left;
+  margin: 2px;
 }
 
 .navLink a {
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    border-radius: 20px;
-    border: 1.2px solid;
-    background-color: white;
-    box-shadow: 1px 1px #888888;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  border-radius: 20px;
+  border: 1.2px solid;
+  background-color: white;
+  box-shadow: 1px 1px #888888;
 }
 
-.navLink img{
-    margin-left: 7px;
-    height: 18px;
+.navLink img {
+  margin-left: 7px;
+  height: 18px;
 }
 
 .navLink a:hover:not(.active) {
-    background-color: #f6cb07d2;
+  background-color: #f6cb07d2;
 }
 
 .active {
-    background-color: #ffd609f9;
+  background-color: #ffd609f9;
 }
 
-.content{
-    height: 1000px;
+.content {
+  height: 1000px;
 }

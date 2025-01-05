@@ -5,14 +5,185 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        .carousel-container {
+            width: 60%;
+            /* Decrease the width to make the carousel smaller */
+            margin: 20px auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            /* Keeps the image width within the slide container */
+            height: auto;
+            /* Adjust height to maintain aspect ratio */
+            object-fit: cover;
+            /* Crop the image to fit without distorting */
+            display: block;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #prevBtn {
+            left: 10px;
+        }
+
+        #nextBtn {
+            right: 10px;
+        }
+
+        .reading-shelf-section {
+            padding: 20px;
+        }
+
+        .shelf {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            /*spacing antara buku*/
+            margin-top: 40px;
+        }
+
+        .book {
+            text-align: center;
+            max-width: 180px;
+        }
+
+        .book img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-title {
+            margin-top: 12px;
+            font-size: 1.2em;
+            color: #2E86C1;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
 </head>
 
 <body>
     <div id="navbarDiv"></div>
     <div class="content">
-        <p>test 1</p>
+        <p
+            style="text-align: center; font-size: 3.5em; font-weight: bold; color: #2E86C1; margin-top: 70px; font-family: 'Playfair Display', serif; text-shadow: 4px 4px 12px rgba(0,0,0,0.3);">
+            Welcome to Ibtida' Books</p>
+        <p
+            style="text-align: center; color: #555; font-size: 1.5em; font-style: italic; margin-bottom: 50px; text-shadow: 2px 2px 6px rgba(0,0,0,0.2);">
+            Your gateway to literary wonders</p>
+
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="carousel-slide">
+                    <img src="https://via.placeholder.com/800x400?text=IMG1" alt="PIC 1">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://via.placeholder.com/800x400?text=IMG2" alt="PIC 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://via.placeholder.com/800x400?text=IMG3" alt="PIC 3">
+                </div>
+            </div>
+            <button id="prevBtn" class="carousel-btn">&#10094;</button>
+            <button id="nextBtn" class="carousel-btn">&#10095;</button>
+        </div>
+
+        <div class="reading-shelf-section">
+            <h2
+                style="text-align: center; font-size: 2.5em; font-weight: bold; color: #2E86C1; margin-top: 50px; font-family: 'Playfair Display', serif;">
+                Reading for Your Growth
+            </h2>
+            <p style="text-align: center; font-size: 1.2em; color: #555; margin-bottom: 40px; font-style: italic;">
+                Curated books to expand your mind and nurture your growth
+            </p>
+
+            <div class="shelf">
+                <div class="book">
+                    <img src="https://via.placeholder.com/150x220?text=Book+1" alt="Book 1">
+                    <p class="book-title">Book Title 1</p>
+                </div>
+                <div class="book">
+                    <img src="https://via.placeholder.com/150x220?text=Book+2" alt="Book 2">
+                    <p class="book-title">Book Title 2</p>
+                </div>
+                <div class="book">
+                    <img src="https://via.placeholder.com/150x220?text=Book+3" alt="Book 3">
+                    <p class="book-title">Book Title 3</p>
+                </div>
+                <div class="book">
+                    <img src="https://via.placeholder.com/150x220?text=Book+4" alt="Book 4">
+                    <p class="book-title">Book Title 4</p>
+                </div>
+                <div class="book">
+                    <img src="https://via.placeholder.com/150x220?text=Book+5" alt="Book 5">
+                    <p class="book-title">Book Title 5</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="top-picks-section">
+            <h2
+                style="text-align: center; font-size: 2.5em; font-weight: bold; color: #2E86C1; margin-top: 50px; font-family: 'Playfair Display', serif;">
+                Top Picks for You
+            </h2>
+            <p style="text-align: center; font-size: 1.2em; color: #555; margin-bottom: 40px; font-style: italic;">
+                Our top curated selections just for you
+            </p>
+
+            <div class="shelf">
+                <div class="book">
+                    <img src="https://via.placeholder.com/150x220?text=Book+1" alt="Book 1">
+                    <p class="book-title">Book Title 1</p>
+                </div>
+                <div class="book">
+                    <img src="https://via.placeholder.com/150x220?text=Book+2" alt="Book 2">
+                    <p class="book-title">Book Title 2</p>
+                </div>
+                <div class="book">
+                    <img src="https://via.placeholder.com/150x220?text=Book+3" alt="Book 3">
+                    <p class="book-title">Book Title 3</p>
+                </div>
+                <div class="book">
+                    <img src="https://via.placeholder.com/150x220?text=Book+4" alt="Book 4">
+                    <p class="book-title">Book Title 4</p>
+                </div>
+                <div class="book">
+                    <img src="https://via.placeholder.com/150x220?text=Book+5" alt="Book 5">
+                    <p class="book-title">Book Title 5</p>
+                </div>
+            </div>
+        </div>
+
     </div>
-    
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../jsFolder/main.js"></script>
 </body>
