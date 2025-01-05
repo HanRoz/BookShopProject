@@ -52,19 +52,19 @@ input {
     background-position: center;
 }
 
-ul {
+.navLinkUl {
     list-style-type: none;
     margin: 0;
     padding: 1;
     overflow: hidden;
 }
 
-li {
+.navLink {
     float: left;
     margin: 2px;
 }
 
-li a {
+.navLink a {
     display: block;
     color: black;
     text-align: center;
@@ -76,18 +76,18 @@ li a {
     box-shadow: 1px 1px #888888;
 }
 
-li img {
+.navLink img{
     margin-left: 7px;
     height: 18px;
 }
 
-li a:hover:not(.active) {
+.navLink a:hover:not(.active) {
     background-color: #f6cb07d2;
 }
 
-/* .active {
+.active {
     background-color: #ffd609f9;
-} */        /*On hold to test active funtion when page change*/
+}
 
 .content{
     height: 1000px;

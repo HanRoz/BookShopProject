@@ -4,15 +4,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Browse</title>
+    <title>Browser</title>
+    <style>
+        .content {
+            margin-left: 10px;
+        }
+
+        .container {
+            display: flex;
+            /* background-color: aquamarine; */
+        }
+
+        #bookDisp {
+            /* background-color: rgb(214, 214, 255); */
+        }
+
+        #catUl {
+            list-style-type: none;
+            text-decoration: underline;
+            border: 1px solid;
+            border-radius: 10px;
+            background-color: rgba(175, 254, 254, 0.882);
+            width: 200px;
+            padding: 0;
+        }
+
+        .catLi {
+            text-align: center;
+            padding: 15px;
+            cursor: pointer;
+        }
+
+        .book-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            /* 4 columns */
+            gap: 10px;
+            /* Adds spacing between boxes */
+        }
+
+        .book-box {
+            width: 200px;
+            /* Set a fixed width */
+            height: 240px;
+            /* Set a fixed height */
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fafafa;
+            overflow: hidden;
+            /* Prevent content overflow */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            /* Space content evenly */
+        }
+    </style>
 </head>
 
 <body>
     <div id="navbarDiv"></div>
     <div class="content">
-        <p>test 2</p>
+        <div class="container">
+            <div id="catBox">
+                <h1>Categories</h1>
+                <ul id="catUl">
+                    <li class="catLi" value="Islam">Islam</li>
+                    <li class="catLi" value="Politic|Governance">Politic & Governance</li>
+                    <li class="catLi" value="History|Civilization">History & Civilazation</li>
+                    <li class="catLi" value="Philosophy|Thought">Philosophy & Thought</li>
+                    <li class="catLi" value="Social|Education|Development">Social, Education & Development</li>
+                    <li class="catLi" value="Memoir|Biography">Memoir & Biography</li>
+                    <li class="catLi" value="Economy|Finance">Economy & Finance</li>
+                    <li class="catLi" value="Science|Technology">Science & Technology</li>
+                </ul>
+            </div>
+            <div id="bookDisp">
+                <h1 style="font-weight: normal;"><strong>Recommended</strong> For You</h1>
+                <div class="book-container" id="bookContainer"></div>
+            </div>
+        </div>
     </div>
-    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../jsFolder/main.js"></script>
 </body>
