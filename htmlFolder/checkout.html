@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Ibtida Books</title>
+    <link rel="stylesheet" href="checkout.css"> <!-- Link to external CSS -->
+    <!-- Add FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header with Logo and Search -->
+        <header>
+            <div class="logo">Ibtida Books</div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search by Title, Author, Keyword, or ISBN">
+            </div>
+            <!-- Navigation Bar with Icons -->
+            <nav>
+                <a href="#">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#">
+                    <i class="fas fa-compass"></i>
+                    <span>Browse</span>
+                </a>
+                <a href="#">
+                    <i class="fas fa-book"></i>
+                    <span>My Library</span>
+                </a>
+                <a href="#">
+                    <i class="fas fa-info-circle"></i>
+                    <span>About Us</span>
+                </a>
+            </nav>
+        </header>
+
+        <!-- Progress Bar with Circles and Lines -->
+        <div class="progress-bar">
+            <div class="progress-step active">
+                <div class="circle">1</div>
+                <span>Cart</span>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step">
+                <div class="circle">2</div>
+                <span>Address</span>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step">
+                <div class="circle">3</div>
+                <span>Contact</span>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step">
+                <div class="circle">4</div>
+                <span>Payment</span>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step">
+                <div class="circle">5</div>
+                <span>Review</span>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step">
+                <div class="circle">6</div>
+                <span>Complete</span>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main">
+            <!-- Cart Section -->
+            <div class="cart-section">
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Quantity</th>
+                            <th>Type</th>
+                            <th>Price</th>
+                            <th>Availability</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="book1.jpg" alt="Book 1" width="50"></td>
+                            <td>Knowledge and Civilisation in Islam</td>
+                            <td>
+                                <div class="quantity-control">
+                                    <div class="quantity-buttons">
+                                        <button onclick="decreaseQuantity()">-</button>
+                                        <input type="number" id="quantity" value="1" min="1" readonly>
+                                        <button onclick="increaseQuantity()">+</button>
+                                    </div>
+                                    <button class="remove-btn">Remove</button>
+                                </div>
+                            </td>
+                            <td>Physical</td>
+                            <td>RM30</td>
+                            <td>In Store</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="order-summary">
+                <h3>Order Summary</h3>
+                <p>1 title, 1 item</p>
+                <div class="summary-details">
+                    <p>Subtotal: <span>RM30</span></p>
+                    <p>Tax: <span>RM5</span></p>
+                    <p>Total: <span>RM35</span></p>
+                </div>
+                <div class="promo-code">
+                    <input type="text" placeholder="Enter promo code">
+                    <button class="apply-btn">Apply</button>
+                </div>
+                <button class="checkout-btn">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for Quantity Control
+        function increaseQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            let quantity = parseInt(quantityInput.value);
+            quantityInput.value = quantity + 1;
+        }
+
+        function decreaseQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            let quantity = parseInt(quantityInput.value);
+            if (quantity > 1) {
+                quantityInput.value = quantity - 1;
+            }
+        }
+    </script>
+</body>
+</html>
