@@ -162,23 +162,20 @@ const books = [
 ];
 
 $(document).ready(function () {
+  // Load Navbar (if needed)
   $("#navbarDiv").load("navbar.html", function () {
-    $(document).on("click", "#searchIcon", searchBooks);
-
-    $("#searchBox").on("keypress", function (e) {
-      if (e.which === 13) {
-        searchBooks();
-      }
-    });
+    bindEvents();
   });
 
+  //------------BROWSE------------//
   const $bookContainer = $("#bookContainer");
 
+  // Function to display books
   function displayBooks(booksArray) {
     $bookContainer.empty();
 
     if (booksArray.length === 0) {
-      $bookContainer.html("<p>No books available in this category.</p>");
+      $bookContainer.html("<p>No results found.</p>");
       return;
     }
 
@@ -187,51 +184,69 @@ $(document).ready(function () {
       const availabilityText =
         book.available === "both" ? "e-book & physical" : book.available;
       $bookBox.html(`
-                <strong>${book.title}</strong>
-                <p>Author:${book.author}</p>
-                <p>Year:${book.yearPublished}</p>
-                <p>Genre:${book.genre.join(", ")}</p>
-                <p>Available in:${availabilityText}</p>
-            `);
+        <strong>${book.title}</strong>
+        <p>Author: ${book.author}</p>
+        <p>Year: ${book.yearPublished}</p>
+        <p>Genre: ${book.genre.join(", ")}</p>
+        <p>Available in: ${availabilityText}</p>
+      `);
       $bookContainer.append($bookBox);
     }
   }
-  displayBooks(books);
 
-  $("#catUl").on("click", ".catLi", function () {
-    const selectedCategory = $(this).attr("value").split("|");
+  // Bind Events
+  function bindEvents() {
+    // Set active class and display books on category click
+    $("#catUl").on("click", ".catLi", function () {
+      $(".catLi").removeClass("active");
+      $(this).addClass("active");
+      filterAndDisplayBooks();
+    });
 
-    const filteredBooks = books.filter((book) =>
-      book.genre.some((genre) => selectedCategory.includes(genre))
-    );
+    // Trigger search on button click
+    $(document).on("click", "#searchIcon", function () {
+      filterAndDisplayBooks();
+    });
 
-    displayBooks(filteredBooks);
-  });
+    // Trigger search on Enter keypress
+    $("#searchBox").on("keypress", function (e) {
+      if (e.which === 13) {
+        filterAndDisplayBooks();
+      }
+    });
+  }
 
-  function searchBooks() {
+  // Filter and display books
+  function filterAndDisplayBooks() {
     const searchText = $("#searchBox").val().trim().toLowerCase();
-    if (searchText === "") {
-      alert("Please enter a search term!");
-      return;
-    }
+    const selectedCategory = $(".catLi.active").attr("value")?.split("|") || [];
 
-    const filteredBooks = books.filter(
-      (book) =>
+    const filteredBooks = books.filter((book) => {
+      // Check if the book matches the selected genre
+      const matchesGenre =
+        selectedCategory.length === 0 ||
+        book.genre.some((genre) => selectedCategory.includes(genre));
+
+      // Check if the book matches the search text
+      const matchesSearch =
+        searchText === "" ||
         book.title.toLowerCase().includes(searchText) ||
         book.author.toLowerCase().includes(searchText) ||
         book.genre.some((genre) => genre.toLowerCase().includes(searchText)) ||
-        book.isbn.toLowerCase().includes(searchText)
-    );
+        book.isbn.toLowerCase().includes(searchText);
 
-    if (filteredBooks.length === 0) {
-      $("#bookContainer").html("<p>No results found.</p>");
-    } else {
-      displayBooks(filteredBooks);
-    }
+      return matchesGenre && matchesSearch;
+    });
+
+    // Display the filtered books
+    displayBooks(filteredBooks);
   }
-});
 
-$(document).ready(function () {
+  // Display all books on initial load
+  displayBooks(books);
+  //------------------------------//
+
+  //------------HOMEPAGE------------//
   const $carousel = $(".carousel");
   const $slides = $(".carousel-slide");
   let currentIndex = 0;
@@ -260,4 +275,37 @@ $(document).ready(function () {
   setInterval(function () {
     showSlide(currentIndex + 1);
   }, 5000);
+  //--------------------------------//
 });
+
+
+// $(document).ready(function () {
+//   const $carousel = $(".carousel");
+//   const $slides = $(".carousel-slide");
+//   let currentIndex = 0;
+
+//   function showSlide(index) {
+//     if (index < 0) {
+//       currentIndex = $slides.length - 1;
+//     } else if (index >= $slides.length) {
+//       currentIndex = 0;
+//     } else {
+//       currentIndex = index;
+//     }
+
+//     const offset = -currentIndex * 100;
+//     $carousel.css("transform", `translateX(${offset}%)`);
+//   }
+
+//   $("#nextBtn").click(function () {
+//     showSlide(currentIndex + 1);
+//   });
+
+//   $("#prevBtn").click(function () {
+//     showSlide(currentIndex - 1);
+//   });
+
+//   setInterval(function () {
+//     showSlide(currentIndex + 1);
+//   }, 5000);
+// }); COMMENTED FOR BACKUP
