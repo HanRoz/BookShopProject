@@ -5,6 +5,8 @@ const books = [
     yearPublished: 2000,
     isbn: "9780812966183",
     available: "both",
+    purchased: true, //new field
+    imgPath: "../cssFolder/imageNIcon/logo.png", //test new field
     synopsis:
       "A concise history of Islam, exploring its foundations, evolution, and cultural impact over centuries.",
     genre: ["Islam"],
@@ -15,6 +17,7 @@ const books = [
     yearPublished: 2005,
     isbn: "9780812982442",
     available: "physical",
+    purchased: false,
     synopsis:
       "An engaging exploration of the history and theology of Islam, challenging misconceptions.",
     genre: ["Islam"],
@@ -25,6 +28,7 @@ const books = [
     yearPublished: 2011,
     isbn: "9780374227340",
     available: "e-books",
+    purchased: true,
     synopsis:
       "An exploration of political systems from prehistory to the French Revolution, analyzing governance evolution.",
     genre: ["Politic", "Governance"],
@@ -35,6 +39,7 @@ const books = [
     yearPublished: 1951,
     isbn: "9780156701532",
     available: "both",
+    purchased: false,
     synopsis:
       "A detailed analysis of totalitarian regimes, focusing on Nazism and Stalinism, and their political mechanisms.",
     genre: ["Politic", "Governance"],
@@ -45,6 +50,7 @@ const books = [
     yearPublished: 2011,
     isbn: "9780062316097",
     available: "both",
+    purchased: true,
     synopsis:
       "A sweeping narrative of human history, from ancient times to modernity, examining culture and civilization.",
     genre: ["History", "Civilization"],
@@ -55,6 +61,7 @@ const books = [
     yearPublished: 1935,
     isbn: "9780671418007",
     available: "physical",
+    purchased: true,
     synopsis:
       "A monumental work chronicling the development of civilization across ages and regions.",
     genre: ["History", "Civilization"],
@@ -65,6 +72,7 @@ const books = [
     yearPublished: 1912,
     isbn: "9780192854239",
     available: "physical",
+    purchased: false,
     synopsis:
       "A classic introduction to philosophy, addressing questions of reality, knowledge, and existence.",
     genre: ["Philosophy", "Thought"],
@@ -75,6 +83,7 @@ const books = [
     yearPublished: 1641,
     isbn: "9780872201927",
     available: "e-books",
+    purchased: true,
     synopsis:
       "A foundational philosophical text, examining the nature of reality and the existence of God.",
     genre: ["Philosophy", "Thought"],
@@ -85,6 +94,7 @@ const books = [
     yearPublished: 1968,
     isbn: "9780826412768",
     available: "both",
+    purchased: false,
     synopsis:
       "A foundational text on social education, emphasizing critical pedagogy and empowerment.",
     genre: ["Social", "Education", "Development"],
@@ -95,6 +105,7 @@ const books = [
     yearPublished: 2013,
     isbn: "9780316322423",
     available: "physical",
+    purchased: true,
     synopsis:
       "The memoir of Malala Yousafzai, a young activist advocating for girls' education.",
     genre: ["Social", "Education", "Development"],
@@ -105,6 +116,7 @@ const books = [
     yearPublished: 1994,
     isbn: "9780316548182",
     available: "e-books",
+    purchased: false,
     synopsis:
       "The autobiography of Nelson Mandela, chronicling his fight against apartheid and his path to leadership.",
     genre: ["Memoir", "Biography"],
@@ -115,6 +127,7 @@ const books = [
     yearPublished: 2018,
     isbn: "9781524763138",
     available: "both",
+    purchased: true,
     synopsis:
       "The deeply personal memoir of Michelle Obama, recounting her journey from childhood to the White House.",
     genre: ["Memoir", "Biography"],
@@ -125,6 +138,7 @@ const books = [
     yearPublished: 2013,
     isbn: "9780674430006",
     available: "both",
+    purchased: false,
     synopsis:
       "A deep dive into economic inequality, its historical roots, and potential solutions for the future.",
     genre: ["Economy", "Finance"],
@@ -135,6 +149,7 @@ const books = [
     yearPublished: 1776,
     isbn: "9780199535926",
     available: "physical",
+    purchased: true,
     synopsis:
       "A foundational text in economics, exploring the principles of free markets and division of labor.",
     genre: ["Economy", "Finance"],
@@ -145,6 +160,7 @@ const books = [
     yearPublished: 1988,
     isbn: "9780553380163",
     available: "physical",
+    purchased: false,
     synopsis:
       "An accessible explanation of the universe, from black holes to the Big Bang, by a legendary physicist.",
     genre: ["Science"],
@@ -155,6 +171,7 @@ const books = [
     yearPublished: 1980,
     isbn: "9780345331359",
     available: "both",
+    purchased: true,
     synopsis:
       "A landmark book on the universe, blending science and philosophy to explore humanity's place in the cosmos.",
     genre: ["Science", "Technology"],
@@ -276,8 +293,78 @@ $(document).ready(function () {
     showSlide(currentIndex + 1);
   }, 5000);
   //--------------------------------//
-});
 
+  const $libraryContainer = $(".contentLibrary");
+  const $bookCoverDisplay = $(".book-cover-display").text("No Book Selected");
+  const $synopsisDisplay = $(".synopsis-display").text(
+    "Select a book to see details"
+  );
+  const $bookList = $(".book-list");
+
+  // Render book list with filter
+  function renderBookList() {
+    const $filterDropdown = $("#genreFilter");
+
+    const genres = new Set();
+
+    books.forEach((book, index) => {
+      // Filter for purchased books only
+      if (book.purchased) {
+        book.genre.forEach((e) => genres.add(e));
+        const $bookItem = $("<li>").text(book.title).attr("data-index", index);
+        $bookItem.on("click", function () {
+          displayBookDetails($(this).data("index"));
+        });
+        $bookList.append($bookItem);
+      }
+    });
+
+    genres.forEach((genre) => {
+      $filterDropdown.append(`<option value="${genre}">${genre}</option>`);
+    });
+
+    $filterDropdown.on("change", function () {
+      const selectedGenre = $(this).val();
+      filterBooks(selectedGenre);
+    });
+
+    $libraryContainer.append($bookCoverDisplay);
+    $libraryContainer.append($synopsisDisplay);
+    $libraryContainer.append($filterDropdown);
+    $libraryContainer.append($bookList);
+  }
+
+  // Display selected book details
+  function displayBookDetails(index) {
+    const book = books[index];
+
+    const bookCoverImage = `<img src="${book.imgPath}" alt="${book.title}">`;
+    $bookCoverDisplay.html(bookCoverImage);
+    $synopsisDisplay.html(`
+    <strong>${book.title}</strong>
+    <p>Author: ${book.author}</p>
+    <p>${book.synopsis}</p>
+    <p>Status: ${book.purchased ? "Purchased" : "Not Purchased"}</p>
+    <button class="read-button">Read</button>
+  `);
+  }
+
+  // Filter books by genre
+  function filterBooks(genre) {
+    $bookList.empty();
+    books.forEach((book, index) => {
+      if (book.purchased && (genre === "all" || book.genre.includes(genre))) {
+        const $bookItem = $("<li>").text(book.title).attr("data-index", index);
+        $bookItem.on("click", function () {
+          displayBookDetails($(this).data("index"));
+        });
+        $bookList.append($bookItem);
+      }
+    });
+  }
+
+  renderBookList();
+});
 
 // $(document).ready(function () {
 //   const $carousel = $(".carousel");

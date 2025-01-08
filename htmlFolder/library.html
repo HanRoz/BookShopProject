@@ -2,19 +2,95 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My library</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Library</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+    }
+
+    .content {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .book-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .book-list li {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .book-list li:hover {
+      background-color: #f0f0f0;
+    }
+
+    .book-cover-display {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .book-cover-display img {
+      max-width: 200px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .synopsis-display {
+      margin: 20px 0;
+      padding: 15px;
+      background-color: #fafafa;
+      border-left: 5px solid #007bff;
+    }
+
+    select#genreFilter {
+      margin-bottom: 20px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+  </style>
+  <link rel="stylesheet" href="../cssFolder/styles.css">
 </head>
 
 <body>
-    <div id="navbarDiv"></div>
-    <div class="content">
-        <p>test 3</p>
-    </div>
-    
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../jsFolder/main.js"></script>
+  <div id="navbarDiv"></div>
+  <div class="contentLibrary">
+    <h1>My Library</h1>
+    <div class="book-cover-display"></div>
+    <div class="synopsis-display"></div>
+    <ul class="book-list"></ul>
+    <select id="genreFilter">
+      <option value="all">All Genres</option>
+    </select>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../jsFolder/main.js"></script>
 </body>
 
 </html>
