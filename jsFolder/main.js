@@ -262,6 +262,29 @@ $(document).ready(function () {
         filterAndDisplayBooks();
       }
     });
+  // Add to cart button click event
+    $(document).on("click", ".add-to-cart-btn", function () {
+      const bookIndex = $(this).data("book-index");
+      const book = books[bookIndex];
+
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const existingItem = cart.find(item => item.isbn === book.isbn);
+
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({
+          ...book,
+          quantity: 1,
+          type: book.available === "both" ? "Physical" : book.available,
+          price: 30, // Assuming a fixed price for all books
+          availability: "In Store"
+        });
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert("Book added to cart!");
+    });
   }
 
   // Filter and display books
