@@ -12,7 +12,6 @@
 
         .container {
             display: flex;
-            /* background-color: aquamarine; */
         }
 
         #catUl {
@@ -34,29 +33,25 @@
         .book-container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            /* 4 columns */
             gap: 10px;
-            /* Adds spacing between boxes */
         }
 
         .book-box {
             width: 200px;
-            /* Set a fixed width */
-            height: 240px;
-            /* Set a fixed height */
+            height: 280px;
+            /* Increase height to accommodate the button */
             margin: 10px;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
             background-color: #fafafa;
             overflow: hidden;
-            /* Prevent content overflow */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             cursor: pointer;
-            /* Space content evenly */
         }
+
         .add-to-cart-btn {
             background-color: #007BFF;
             color: #fff;
