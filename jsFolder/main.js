@@ -232,12 +232,18 @@ $(document).ready(function () {
       const availabilityText =
         book.available === "both" ? "e-book & physical" : book.available;
       $bookBox.html(`
-        <strong>${book.title}</strong>
-        <p>Author: ${book.author}</p>
-        <p>Year: ${book.yearPublished}</p>
-        <p>Genre: ${book.genre.join(", ")}</p>
-        <p>Available in: ${availabilityText}</p>
-        <button class="add-to-cart-btn" data-book-index="${books.indexOf(book)}">Add to Cart</button>
+        <div class="book-content">
+          <img src="${book.imgPath}" alt="${book.title} Cover" class="book-cover">
+          <div class="book-details">
+            <strong>${book.title}</strong>
+            <p>Author: ${book.author}</p>
+            <p class="details">Year: ${book.yearPublished}</p>
+            <p class="details">Genre: ${book.genre.join(", ")}</p>
+            <p class="details">Available in: ${availabilityText}</p>
+            <p class="book-synopsis">${book.synopsis}</p>
+            <button class="add-to-cart-btn" data-book-index="${books.indexOf(book)}">Add to Cart</button>
+          </div>
+        </div>
       `);
       $bookContainer.append($bookBox);
     }
@@ -421,6 +427,68 @@ $(document).ready(function () {
   }
 
   renderBookList();
+
+  //---------------PROFILE-----------------//
+  const $dispCollection = $("#dispBookCollection");
+
+  function displayBookCollection(booksArray) {
+    $dispCollection.empty();
+
+    if (booksArray.length === 0) {
+      $dispCollection.html("<p>No results found.</p>");
+      return;
+    }
+
+    for (const book of booksArray) {
+      if (book.purchased) {
+        const $bookCollection = $("<div>").addClass("bookCollection");
+        $bookCollection.html(`
+              <img src="${book.imgPath}" alt="${book.title}" class="bookImage">
+              <div class="bookDetails">
+              <strong>${book.title}</strong>
+              <p> <strong>Author:</strong> ${book.author}</p>
+              </div>
+            `);
+        $dispCollection.append($bookCollection);
+      }
+    }
+  }
+  displayBookCollection(books);
+
+  const $tagContainer = $("#tag");
+
+  function displayGenreTags(booksArray) {
+    $tagContainer.empty();
+
+    // Count genre frequencies for purchased books
+    const genreFrequency = {};
+    for (const book of booksArray) {
+      if (book.purchased) {
+        for (const genre of book.genre) {
+          genreFrequency[genre] = (genreFrequency[genre] || 0) + 1;
+        }
+      }
+    }
+
+    // Find genres with frequency of 2 or more
+    const frequentGenres = Object.keys(genreFrequency).filter(
+      (genre) => genreFrequency[genre] >= 2
+    );
+
+    if (frequentGenres.length === 0) {
+      $tagContainer.html("<p>No genres with two or more occurrences found.</p>");
+      return;
+    }
+
+    // Display frequent genres as tags
+    frequentGenres.forEach((genre) => {
+      const $genreTag = $("<div>").addClass("genreTag").text(genre);
+      $tagContainer.append($genreTag);
+    });
+  }
+
+  displayGenreTags(books);
+  //--------------------------------//
 });
 
 // $(document).ready(function () {
@@ -452,4 +520,33 @@ $(document).ready(function () {
 //   setInterval(function () {
 //     showSlide(currentIndex + 1);
 //   }, 5000);
-// }); COMMENTED FOR BACKUP
+// });
+//
+//
+//
+//   // const $bookContainer = $("#bookContainer");
+
+// // Function to display books
+// function displayBooks(booksArray) {
+//   $bookContainer.empty();
+
+//   if (booksArray.length === 0) {
+//     $bookContainer.html("<p>No results found.</p>");
+//     return;
+//   }
+
+//   for (const book of booksArray) {
+//     const $bookBox = $("<div>").addClass("book-box");
+//     const availabilityText =
+//       book.available === "both" ? "e-book & physical" : book.available;
+//     $bookBox.html(`
+//       <strong>${book.title}</strong>
+//       <p>Author: ${book.author}</p>
+//       <p>Year: ${book.yearPublished}</p>
+//       <p>Genre: ${book.genre.join(", ")}</p>
+//       <p>Available in: ${availabilityText}</p>
+//       <button class="add-to-cart-btn" data-book-index="${books.indexOf(book)}">Add to Cart</button>
+//     `);
+//     $bookContainer.append($bookBox);
+//   }
+// }COMMENTED FOR BACKUP

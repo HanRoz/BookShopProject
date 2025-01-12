@@ -1,8 +1,6 @@
 body {
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
-    ),
+  background: linear-gradient(rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)),
     url(./imageNIcon/steptodown.com915463-removebg-previewNoBg.png);
   background-color: #edf9ff;
   background-position: center;
@@ -18,7 +16,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 70px; /* Adjust height to ensure proper vertical alignment */
+  height: 70px;
+  /* Adjust height to ensure proper vertical alignment */
   position: relative;
 }
 
@@ -26,8 +25,10 @@ body {
   position: relative;
   width: 100%;
   padding-top: 15px;
-  max-width: 500px; /* Slightly increase the max-width for better visibility */
-  margin: 0 auto; /* Center it horizontally */
+  max-width: 500px;
+  /* Slightly increase the max-width for better visibility */
+  margin: 0 auto;
+  /* Center it horizontally */
   display: flex;
   align-items: center;
 }
@@ -64,11 +65,15 @@ body {
 }
 
 #logo {
-  width: 90px; /* Adjust width to make it smaller */
-  height: auto; /* Keep aspect ratio */
+  width: 90px;
+  /* Adjust width to make it smaller */
+  height: auto;
+  /* Keep aspect ratio */
   position: absolute;
-  top: 0; /* Move it closer to the top */
-  left: 10px; /* Distance from the left */
+  top: 0;
+  /* Move it closer to the top */
+  left: 10px;
+  /* Distance from the left */
 }
 
 .navbar {
@@ -116,17 +121,13 @@ body {
   background-color: #4ce7e479;
 }
 
-.content {
+/* .content {
   height: 1000px;
-}
+} */
 
 @media (max-width: 768px) {
   #searchBar {
     width: 60%;
     transform: translateX(20px);
   }
-
- 
-
-  
 }
