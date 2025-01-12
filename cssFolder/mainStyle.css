@@ -25,6 +25,7 @@ body {
 #searchBar {
   position: relative;
   width: 100%;
+  padding-top: 15px;
   max-width: 500px; /* Slightly increase the max-width for better visibility */
   margin: 0 auto; /* Center it horizontally */
   display: flex;
@@ -35,12 +36,14 @@ body {
   position: absolute;
   left: 15px;
   top: 50%;
+  margin-top: 8px;
+  margin-left: 5px;
   transform: translateY(-50%);
   width: 18px;
   height: 18px;
 }
 
-#searchIcon{
+#searchIcon {
   cursor: pointer;
 }
 
@@ -51,7 +54,7 @@ body {
   border: 1px solid #ccc;
   border-radius: 5px;
   margin: 10px;
-  padding-left: 25px;
+  padding-left: 35px;
   border-radius: 50px;
   border-style: solid;
   border-width: thin;
@@ -115,4 +118,15 @@ body {
 
 .content {
   height: 1000px;
+}
+
+@media (max-width: 768px) {
+  #searchBar {
+    width: 60%;
+    transform: translateX(20px);
+  }
+
+ 
+
+  
 }
