@@ -237,6 +237,7 @@ $(document).ready(function () {
         <p>Year: ${book.yearPublished}</p>
         <p>Genre: ${book.genre.join(", ")}</p>
         <p>Available in: ${availabilityText}</p>
+        <button class="add-to-cart-btn" data-book-index="${books.indexOf(book)}">Add to Cart</button>
       `);
       $bookContainer.append($bookBox);
     }
@@ -262,7 +263,8 @@ $(document).ready(function () {
         filterAndDisplayBooks();
       }
     });
-  // Add to cart button click event
+
+    // Add to cart button click event
     $(document).on("click", ".add-to-cart-btn", function () {
       const bookIndex = $(this).data("book-index");
       const book = books[bookIndex];
@@ -348,6 +350,7 @@ $(document).ready(function () {
   }, 5000);
   //--------------------------------//
 
+  //------------LIBRARY------------//
   const $libraryContainer = $(".contentLibrary");
   const $bookCoverDisplay = $(".book-cover-display").text("No Book Selected");
   const $synopsisDisplay = $(".synopsis-display").text(
@@ -363,10 +366,7 @@ $(document).ready(function () {
 
     books.forEach((book, index) => {
       // Filter for purchased books only
-      if (
-        book.purchased &&
-        (book.available === "both" || book.available === "e-books")
-      ) {
+      if (book.purchased) {
         book.genre.forEach((e) => genres.add(e));
         const $bookItem = $("<li>").text(book.title).attr("data-index", index);
         $bookItem.on("click", function () {
