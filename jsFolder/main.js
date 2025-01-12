@@ -6,7 +6,8 @@ const books = [
     isbn: "9780812966183",
     available: "both",
     purchased: true, //new field
-    imgPath: "../cssFolder/imageNIcon/logo.png", //test new field
+    imgPath:
+      "https:images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1403181902i/27306.jpg",
     synopsis:
       "A concise history of Islam, exploring its foundations, evolution, and cultural impact over centuries.",
     genre: ["Islam"],
@@ -18,6 +19,8 @@ const books = [
     isbn: "9780812982442",
     available: "physical",
     purchased: false,
+    imgPath:
+      "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1528328757i/40411388.jpg",
     synopsis:
       "An engaging exploration of the history and theology of Islam, challenging misconceptions.",
     genre: ["Islam"],
@@ -29,6 +32,8 @@ const books = [
     isbn: "9780374227340",
     available: "e-books",
     purchased: true,
+    imgPath:
+      "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1317064084i/9704856.jpg",
     synopsis:
       "An exploration of political systems from prehistory to the French Revolution, analyzing governance evolution.",
     genre: ["Politic", "Governance"],
@@ -40,6 +45,8 @@ const books = [
     isbn: "9780156701532",
     available: "both",
     purchased: false,
+    imgPath:
+      "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1565095964i/396931.jpg",
     synopsis:
       "A detailed analysis of totalitarian regimes, focusing on Nazism and Stalinism, and their political mechanisms.",
     genre: ["Politic", "Governance"],
@@ -51,6 +58,8 @@ const books = [
     isbn: "9780062316097",
     available: "both",
     purchased: true,
+    imgPath:
+      "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1703329310i/23692271.jpg",
     synopsis:
       "A sweeping narrative of human history, from ancient times to modernity, examining culture and civilization.",
     genre: ["History", "Civilization"],
@@ -62,6 +71,8 @@ const books = [
     isbn: "9780671418007",
     available: "physical",
     purchased: true,
+    imgPath:
+      "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1652282857i/174722.jpg",
     synopsis:
       "A monumental work chronicling the development of civilization across ages and regions.",
     genre: ["History", "Civilization"],
@@ -73,6 +84,8 @@ const books = [
     isbn: "9780192854239",
     available: "physical",
     purchased: false,
+    imgPath:
+      "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1405495766i/31799.jpg",
     synopsis:
       "A classic introduction to philosophy, addressing questions of reality, knowledge, and existence.",
     genre: ["Philosophy", "Thought"],
@@ -84,6 +97,8 @@ const books = [
     isbn: "9780872201927",
     available: "e-books",
     purchased: true,
+    imgPath:
+      "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1405624402i/31862.jpg",
     synopsis:
       "A foundational philosophical text, examining the nature of reality and the existence of God.",
     genre: ["Philosophy", "Thought"],
@@ -95,6 +110,8 @@ const books = [
     isbn: "9780826412768",
     available: "both",
     purchased: false,
+    imgPath:
+      "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1388180018i/72657.jpg",
     synopsis:
       "A foundational text on social education, emphasizing critical pedagogy and empowerment.",
     genre: ["Social", "Education", "Development"],
@@ -106,6 +123,8 @@ const books = [
     isbn: "9780316322423",
     available: "physical",
     purchased: true,
+    imgPath:
+      "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1375414895i/17851885.jpg",
     synopsis:
       "The memoir of Malala Yousafzai, a young activist advocating for girls' education.",
     genre: ["Social", "Education", "Development"],
@@ -117,6 +136,8 @@ const books = [
     isbn: "9780316548182",
     available: "e-books",
     purchased: false,
+    imgPath:
+      "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1327997342i/318431.jpg",
     synopsis:
       "The autobiography of Nelson Mandela, chronicling his fight against apartheid and his path to leadership.",
     genre: ["Memoir", "Biography"],
@@ -128,6 +149,8 @@ const books = [
     isbn: "9781524763138",
     available: "both",
     purchased: true,
+    imgPath:
+      "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1528206996i/38746485.jpg",
     synopsis:
       "The deeply personal memoir of Michelle Obama, recounting her journey from childhood to the White House.",
     genre: ["Memoir", "Biography"],
@@ -139,6 +162,8 @@ const books = [
     isbn: "9780674430006",
     available: "both",
     purchased: false,
+    imgPath:
+      "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1390111547i/18736925.jpg",
     synopsis:
       "A deep dive into economic inequality, its historical roots, and potential solutions for the future.",
     genre: ["Economy", "Finance"],
@@ -150,6 +175,8 @@ const books = [
     isbn: "9780199535926",
     available: "physical",
     purchased: true,
+    imgPath:
+      "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1567191193i/25698.jpg",
     synopsis:
       "A foundational text in economics, exploring the principles of free markets and division of labor.",
     genre: ["Economy", "Finance"],
@@ -161,6 +188,8 @@ const books = [
     isbn: "9780553380163",
     available: "physical",
     purchased: false,
+    imgPath:
+      "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1333578746i/3869.jpg",
     synopsis:
       "An accessible explanation of the universe, from black holes to the Big Bang, by a legendary physicist.",
     genre: ["Science"],
@@ -172,6 +201,8 @@ const books = [
     isbn: "9780345331359",
     available: "both",
     purchased: true,
+    imgPath:
+      "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1388620656i/55030.jpg",
     synopsis:
       "A landmark book on the universe, blending science and philosophy to explore humanity's place in the cosmos.",
     genre: ["Science", "Technology"],
@@ -309,7 +340,10 @@ $(document).ready(function () {
 
     books.forEach((book, index) => {
       // Filter for purchased books only
-      if (book.purchased) {
+      if (
+        book.purchased &&
+        (book.available === "both" || book.available === "e-books")
+      ) {
         book.genre.forEach((e) => genres.add(e));
         const $bookItem = $("<li>").text(book.title).attr("data-index", index);
         $bookItem.on("click", function () {
