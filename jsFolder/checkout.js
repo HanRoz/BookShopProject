@@ -53,13 +53,13 @@ $(document).ready(function () {
       discount = subtotal * 0.1; // 10% discount
     }
 
-    const tax = (subtotal - discount) * 0.1; // Assuming 10% tax
-    const total = subtotal - discount + tax;
+    const deliv = (subtotal - discount) * 0.1; // Assuming 10% tax
+    const total = subtotal - discount + deliv;
 
     $(".summary-details").html(`
       <p>Subtotal: <span>RM${subtotal.toFixed(2)}</span></p>
       ${discount > 0 ? `<p>Discount: <span>RM${discount.toFixed(2)}</span></p>` : ''}
-      <p>Tax: <span>RM${tax.toFixed(2)}</span></p>
+      <p>Delivery: <span>RM${deliv.toFixed(2)}</span></p>
       <p>Total: <span>RM${total.toFixed(2)}</span></p>
     `);
   }
@@ -104,13 +104,14 @@ function updateProgressBar(nextSection) {
   });
 }
 
-
-  // Function to hide/show the order summary based on the current section
   function toggleOrderSummaryVisibility(currentSection) {
-    if (currentSection === ".cart-section" || currentSection === ".review-section") {
+    if (currentSection === ".cart-section") {
       $(".order-summary").show(); // Show order summary
-    } else {
-      $(".order-summary").hide(); // Hide order summary
+    } else if(currentSection === ".review-section"){
+      $(".order-summary").show()
+      $(".checkout-btn").text("Re-confirm"); 
+    }else{
+      $(".order-summary").hide()
     }
   }
 
@@ -170,11 +171,16 @@ function updateProgressBar(nextSection) {
       }
     });
 
-    // Checkout button
-    $(".checkout-btn").on("click", function () {
-      showNextSection(".cart-section", ".address-section");
-      toggleOrderSummaryVisibility(".address-section");
-    });
+   // Checkout button
+$(".checkout-btn").on("click", function () {
+  if (cart.length === 0) {
+    alert("Your cart is empty. Please add items before proceeding to checkout.");
+    return; // Stop the process if the cart is empty
+  }
+  showNextSection(".cart-section", ".address-section");
+  toggleOrderSummaryVisibility(".address-section");
+});
+
 
     // Next button for Address section
     $("#addressForm").on("submit", function (e) {

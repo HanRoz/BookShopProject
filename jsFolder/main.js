@@ -11,6 +11,7 @@ const books = [
     synopsis:
       "A concise history of Islam, exploring its foundations, evolution, and cultural impact over centuries.",
     genre: ["Islam"],
+    price: 75.00,
   },
   {
     author: "Reza Aslan",
@@ -24,6 +25,7 @@ const books = [
     synopsis:
       "An engaging exploration of the history and theology of Islam, challenging misconceptions.",
     genre: ["Islam"],
+    price: 80.00,
   },
   {
     author: "Francis Fukuyama",
@@ -37,6 +39,7 @@ const books = [
     synopsis:
       "An exploration of political systems from prehistory to the French Revolution, analyzing governance evolution.",
     genre: ["Politic", "Governance"],
+    price: 50.00,
   },
   {
     author: "Hannah Arendt",
@@ -50,6 +53,7 @@ const books = [
     synopsis:
       "A detailed analysis of totalitarian regimes, focusing on Nazism and Stalinism, and their political mechanisms.",
     genre: ["Politic", "Governance"],
+    price: 67.00,
   },
   {
     author: "Yuval Noah Harari",
@@ -63,6 +67,7 @@ const books = [
     synopsis:
       "A sweeping narrative of human history, from ancient times to modernity, examining culture and civilization.",
     genre: ["History", "Civilization"],
+    price: 55.00,
   },
   {
     author: "Will Durant",
@@ -76,6 +81,7 @@ const books = [
     synopsis:
       "A monumental work chronicling the development of civilization across ages and regions.",
     genre: ["History", "Civilization"],
+    price: 21.70,
   },
   {
     author: "Bertrand Russell",
@@ -89,6 +95,7 @@ const books = [
     synopsis:
       "A classic introduction to philosophy, addressing questions of reality, knowledge, and existence.",
     genre: ["Philosophy", "Thought"],
+    price: 21.90,
   },
   {
     author: "Rene Descartes",
@@ -102,6 +109,7 @@ const books = [
     synopsis:
       "A foundational philosophical text, examining the nature of reality and the existence of God.",
     genre: ["Philosophy", "Thought"],
+    price: 99.00,
   },
   {
     author: "Paulo Freire",
@@ -115,6 +123,7 @@ const books = [
     synopsis:
       "A foundational text on social education, emphasizing critical pedagogy and empowerment.",
     genre: ["Social", "Education", "Development"],
+    price: 89.70,
   },
   {
     author: "Malala Yousafzai",
@@ -128,6 +137,7 @@ const books = [
     synopsis:
       "The memoir of Malala Yousafzai, a young activist advocating for girls' education.",
     genre: ["Social", "Education", "Development"],
+    price: 34.00,
   },
   {
     author: "Nelson Mandela",
@@ -141,6 +151,7 @@ const books = [
     synopsis:
       "The autobiography of Nelson Mandela, chronicling his fight against apartheid and his path to leadership.",
     genre: ["Memoir", "Biography"],
+    price: 54.30,
   },
   {
     author: "Michelle Obama",
@@ -154,6 +165,7 @@ const books = [
     synopsis:
       "The deeply personal memoir of Michelle Obama, recounting her journey from childhood to the White House.",
     genre: ["Memoir", "Biography"],
+    price: 44.00,
   },
   {
     author: "Thomas Piketty",
@@ -167,6 +179,7 @@ const books = [
     synopsis:
       "A deep dive into economic inequality, its historical roots, and potential solutions for the future.",
     genre: ["Economy", "Finance"],
+    price: 67.80,
   },
   {
     author: "Adam Smith",
@@ -180,6 +193,7 @@ const books = [
     synopsis:
       "A foundational text in economics, exploring the principles of free markets and division of labor.",
     genre: ["Economy", "Finance"],
+    price: 34.90,
   },
   {
     author: "Stephen Hawking",
@@ -193,6 +207,7 @@ const books = [
     synopsis:
       "An accessible explanation of the universe, from black holes to the Big Bang, by a legendary physicist.",
     genre: ["Science"],
+    price: 40.00,
   },
   {
     author: "Carl Sagan",
@@ -206,6 +221,7 @@ const books = [
     synopsis:
       "A landmark book on the universe, blending science and philosophy to explore humanity's place in the cosmos.",
     genre: ["Science", "Technology"],
+    price: 44.00,
   },
 ];
 
@@ -237,9 +253,10 @@ $(document).ready(function () {
           <div class="book-details">
             <strong>${book.title}</strong>
             <p>Author: ${book.author}</p>
-            <p class="details">Year: ${book.yearPublished}</p>
-            <p class="details">Genre: ${book.genre.join(", ")}</p>
-            <p class="details">Available in: ${availabilityText}</p>
+            <p class="details"><strong>Year: </strong>${book.yearPublished}</p>
+            <p class="details"><strong>Genre: </strong>${book.genre.join(", ")}</p>
+            <p class="details"><strong>Available in: </strong>${availabilityText}</p>
+            <p class="details"><strong>Price (RM): </strong>${book.price}</p>
             <p class="book-synopsis">${book.synopsis}</p>
             <button class="add-to-cart-btn" data-book-index="${books.indexOf(book)}">Add to Cart</button>
           </div>
@@ -285,7 +302,7 @@ $(document).ready(function () {
           ...book,
           quantity: 1,
           type: book.available === "both" ? "Physical" : book.available,
-          price: 30, // Assuming a fixed price for all books
+          price: book.price, // Assuming a fixed price for all books
           availability: "In Store"
         });
       }
