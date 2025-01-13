@@ -77,25 +77,33 @@ $(document).ready(function () {
     toggleOrderSummaryVisibility(nextSection);
   }
 
-  // Function to update the progress bar
-  function updateProgressBar(nextSection) {
-    const progressSteps = $(".progress-step");
-    progressSteps.removeClass("active");
+// Function to update the progress bar based on the section
+function updateProgressBar(nextSection) {
+  const progressSteps = $(".progress-step");
+  const sections = [
+    ".cart-section",
+    ".address-section",
+    ".contact-section",
+    ".payment-section",
+    ".review-section",
+    ".complete-section"
+  ];
 
-    if (nextSection === ".cart-section") {
-      $(".progress-step:nth-child(1)").addClass("active");
-    } else if (nextSection === ".address-section") {
-      $(".progress-step:nth-child(2)").addClass("active");
-    } else if (nextSection === ".contact-section") {
-      $(".progress-step:nth-child(3)").addClass("active");
-    } else if (nextSection === ".payment-section") {
-      $(".progress-step:nth-child(4)").addClass("active");
-    } else if (nextSection === ".review-section") {
-      $(".progress-step:nth-child(5)").addClass("active");
-    } else if (nextSection === ".complete-section") {
-      $(".progress-step:nth-child(6)").addClass("active");
+  // Find the current step index based on the next section
+  const currentStepIndex = sections.indexOf(nextSection);
+
+  // Update progress bar classes
+  progressSteps.removeClass("active completed");
+  progressSteps.each(function (index) {
+    if (index < currentStepIndex) {
+      $(this).addClass("completed"); // Mark previous steps as completed
     }
-  }
+    if (index === currentStepIndex) {
+      $(this).addClass("active"); // Highlight the current step
+    }
+  });
+}
+
 
   // Function to hide/show the order summary based on the current section
   function toggleOrderSummaryVisibility(currentSection) {
@@ -104,6 +112,20 @@ $(document).ready(function () {
     } else {
       $(".order-summary").hide(); // Hide order summary
     }
+  }
+
+  // Function to validate form fields
+  function validateForm(formId) {
+    let isValid = true;
+    $(`#${formId} input`).each(function () {
+      if ($(this).val().trim() === "") {
+        isValid = false;
+        $(this).addClass("error");
+      } else {
+        $(this).removeClass("error");
+      }
+    });
+    return isValid;
   }
 
   // Bind Events
@@ -157,26 +179,38 @@ $(document).ready(function () {
     // Next button for Address section
     $("#addressForm").on("submit", function (e) {
       e.preventDefault();
-      showNextSection(".address-section", ".contact-section");
-      toggleOrderSummaryVisibility(".contact-section");
+      if (validateForm("addressForm")) {
+        showNextSection(".address-section", ".contact-section");
+        toggleOrderSummaryVisibility(".contact-section");
+      } else {
+        alert("Please fill out all fields in the Address section.");
+      }
     });
 
     // Next button for Contact section
     $("#contactForm").on("submit", function (e) {
       e.preventDefault();
-      showNextSection(".contact-section", ".payment-section");
-      toggleOrderSummaryVisibility(".payment-section");
+      if (validateForm("contactForm")) {
+        showNextSection(".contact-section", ".payment-section");
+        toggleOrderSummaryVisibility(".payment-section");
+      } else {
+        alert("Please fill out all fields in the Contact section.");
+      }
     });
 
     // Next button for Payment section
     $("#paymentForm").on("submit", function (e) {
       e.preventDefault();
-      showNextSection(".payment-section", ".review-section");
-      toggleOrderSummaryVisibility(".review-section");
+      if (validateForm("paymentForm")) {
+        showNextSection(".payment-section", ".review-section");
+        toggleOrderSummaryVisibility(".review-section");
+      } else {
+        alert("Please fill out all fields in the Payment section.");
+      }
     });
 
-    // Complete Order button
-    $(".next-btn").on("click", function () {
+    // Complete Order button (only for Review section)
+    $(".review-section .next-btn").on("click", function () {
       showNextSection(".review-section", ".complete-section");
       toggleOrderSummaryVisibility(".complete-section");
     });

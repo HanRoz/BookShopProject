@@ -1,377 +1,381 @@
 /* Progress Bar */
 .progress-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  
-  .progress-step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-  }
-  
-  .progress-step .circle {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: #e0e0e0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    color: #333;
-    margin-bottom: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .progress-step.active .circle {
-    background-color: #007BFF;
-    color: #fff;
-  }
-  
-  .progress-step span {
-    font-size: 14px;
-    color: #333;
-  }
-  
-  .progress-line {
-    flex: 1;
-    height: 2px;
-    background-color: #e0e0e0;
-    margin: 0 10px;
-    position: relative;
-  }
-  
-  .progress-line::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 0;
-    background-color: #007BFF;
-    transition: width 0.3s ease;
-  }
-  
-  .progress-step.active ~ .progress-line::after {
-    width: 100%;
-  }
-  
-  /* Main Content */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.progress-step .circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.progress-step.active .circle {
+  background-color: #007BFF; /* Blue color for active steps */
+  color: #fff; /* White text for active steps */
+}
+
+.progress-step span {
+  font-size: 14px;
+  color: #333;
+}
+
+.progress-line {
+  flex: 1;
+  height: 2px;
+  background-color: #e0e0e0;
+  margin: 0 10px;
+  position: relative;
+}
+
+.progress-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background-color: #007BFF;
+  transition: width 0.3s ease;
+}
+
+.progress-step.active ~ .progress-line::after {
+  width: 100%;
+}
+
+.error {
+  border: 1px solid red !important;
+}
+
+/* Main Content */
+.main {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; /* Allow sections to wrap on smaller screens */
+}
+
+/* Cart Section */
+.cart-section {
+  flex: 2;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%; /* Ensure full width */
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cart-table th,
+.cart-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-table th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+.cart-table td img {
+  width: 50px;
+  height: auto;
+  border-radius: 5px;
+}
+
+/* Quantity Control */
+.quantity-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity-buttons {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.quantity-buttons button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity-buttons button:hover {
+  background-color: #0056b3;
+}
+
+.quantity-buttons input {
+  width: 50px;
+  height: 30px;
+  text-align: center;
+  border: none;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.remove-btn {
+  background-color: #ff4d4d;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.remove-btn:hover {
+  background-color: #cc0000;
+}
+
+/* Order Summary */
+.order-summary {
+  flex: 1;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%; /* Ensure full width */
+}
+
+.order-summary h3 {
+  margin-top: 0;
+  font-size: 18px;
+  color: #007BFF;
+}
+
+.summary-details p {
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.summary-details span {
+  float: right;
+  font-weight: bold;
+}
+
+.checkout-btn {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.checkout-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Promo Code Section */
+.promo-code {
+  display: flex;
+  gap: 10px;
+}
+
+.promo-code input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.apply-btn {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.apply-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Address, Contact, Payment, Review, Complete Sections */
+.address-section,
+.contact-section,
+.payment-section,
+.review-section,
+.complete-section {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 20px;
+  width: 100%; /* Ensure full width */
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.next-btn {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.next-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .main {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap; /* Allow sections to wrap on smaller screens */
+    flex-direction: column;
+    gap: 10px;
   }
-  
-  /* Cart Section */
-  .cart-section {
-    flex: 2;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 100%; /* Ensure full width */
-  }
-  
-  .cart-table {
+
+  .cart-section,
+  .order-summary {
     width: 100%;
-    border-collapse: collapse;
+    padding: 10px;
   }
-  
+
   .cart-table th,
   .cart-table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+    padding: 8px;
+    font-size: 14px;
   }
-  
-  .cart-table th {
-    background-color: #f8f9fa;
-    font-weight: bold;
-  }
-  
-  .cart-table td img {
-    width: 50px;
-    height: auto;
-    border-radius: 5px;
-  }
-  
-  /* Quantity Control */
-  .quantity-control {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .quantity-buttons {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  
+
   .quantity-buttons button {
-    width: 30px;
-    height: 30px;
-    border: none;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 25px;
+    height: 25px;
+    font-size: 14px;
   }
-  
-  .quantity-buttons button:hover {
-    background-color: #0056b3;
-  }
-  
+
   .quantity-buttons input {
-    width: 50px;
-    height: 30px;
-    text-align: center;
-    border: none;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
+    width: 40px;
+    height: 25px;
     font-size: 14px;
   }
-  
+
   .remove-btn {
-    background-color: #ff4d4d;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
+    padding: 3px 8px;
+    font-size: 12px;
   }
-  
-  .remove-btn:hover {
-    background-color: #cc0000;
-  }
-  
-  /* Order Summary */
-  .order-summary {
-    flex: 1;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 100%; /* Ensure full width */
-  }
-  
+
   .order-summary h3 {
-    margin-top: 0;
-    font-size: 18px;
-    color: #007BFF;
+    font-size: 16px;
   }
-  
+
   .summary-details p {
-    margin: 10px 0;
+    font-size: 12px;
+  }
+
+  .checkout-btn {
+    padding: 10px 15px;
     font-size: 14px;
   }
-  
-  .summary-details span {
-    float: right;
-    font-weight: bold;
-  }
-  
-  .checkout-btn {
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .checkout-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Promo Code Section */
-  .promo-code {
-    display: flex;
+}
+
+@media (max-width: 480px) {
+  .progress-bar {
+    flex-wrap: wrap;
     gap: 10px;
   }
-  
-  .promo-code input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+
+  .progress-step {
+    flex: 1 1 45%;
+    margin-bottom: 10px;
+  }
+
+  .progress-line {
+    display: none;
+  }
+
+  .cart-table th,
+  .cart-table td {
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  .quantity-buttons button {
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+  }
+
+  .quantity-buttons input {
+    width: 30px;
+    height: 20px;
+    font-size: 12px;
+  }
+
+  .remove-btn {
+    padding: 2px 6px;
+    font-size: 10px;
+  }
+
+  .order-summary h3 {
     font-size: 14px;
   }
-  
-  .apply-btn {
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
+
+  .summary-details p {
+    font-size: 10px;
   }
-  
-  .apply-btn:hover {
-    background-color: #0056b3;
+
+  .checkout-btn {
+    padding: 8px 12px;
+    font-size: 12px;
   }
-  
-  /* Address, Contact, Payment, Review, Complete Sections */
-  .address-section,
-  .contact-section,
-  .payment-section,
-  .review-section,
-  .complete-section {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-top: 20px;
-    width: 100%; /* Ensure full width */
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 5px;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 14px;
-  }
-  
-  .next-btn {
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  
-  .next-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .main {
-      flex-direction: column;
-      gap: 10px;
-    }
-  
-    .cart-section,
-    .order-summary {
-      width: 100%;
-      padding: 10px;
-    }
-  
-    .cart-table th,
-    .cart-table td {
-      padding: 8px;
-      font-size: 14px;
-    }
-  
-    .quantity-buttons button {
-      width: 25px;
-      height: 25px;
-      font-size: 14px;
-    }
-  
-    .quantity-buttons input {
-      width: 40px;
-      height: 25px;
-      font-size: 14px;
-    }
-  
-    .remove-btn {
-      padding: 3px 8px;
-      font-size: 12px;
-    }
-  
-    .order-summary h3 {
-      font-size: 16px;
-    }
-  
-    .summary-details p {
-      font-size: 12px;
-    }
-  
-    .checkout-btn {
-      padding: 10px 15px;
-      font-size: 14px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .progress-bar {
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-  
-    .progress-step {
-      flex: 1 1 45%;
-      margin-bottom: 10px;
-    }
-  
-    .progress-line {
-      display: none;
-    }
-  
-    .cart-table th,
-    .cart-table td {
-      padding: 6px;
-      font-size: 12px;
-    }
-  
-    .quantity-buttons button {
-      width: 20px;
-      height: 20px;
-      font-size: 12px;
-    }
-  
-    .quantity-buttons input {
-      width: 30px;
-      height: 20px;
-      font-size: 12px;
-    }
-  
-    .remove-btn {
-      padding: 2px 6px;
-      font-size: 10px;
-    }
-  
-    .order-summary h3 {
-      font-size: 14px;
-    }
-  
-    .summary-details p {
-      font-size: 10px;
-    }
-  
-    .checkout-btn {
-      padding: 8px 12px;
-      font-size: 12px;
-    }
-  }
+}

@@ -372,7 +372,8 @@ $(document).ready(function () {
 
     books.forEach((book, index) => {
       // Filter for purchased books only
-      if (book.purchased) {
+
+      if (book.purchased && (book.available === "both" || book.available === "e-books")) {
         book.genre.forEach((e) => genres.add(e));
         const $bookItem = $("<li>").text(book.title).attr("data-index", index);
         $bookItem.on("click", function () {
